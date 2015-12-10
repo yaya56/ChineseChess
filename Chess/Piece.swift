@@ -415,3 +415,11 @@ struct 帅:Piece {
         side = .Red
     }
 }
+
+struct Config {
+    var blackMove:Bool
+    static var shareConfig = Config()
+    init(){
+        blackMove = true
+    }
+}

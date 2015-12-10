@@ -12,31 +12,38 @@ let WIDTH = SCREEN.width
 let HEIGHT = SCREEN.height
 let EACHW = WIDTH/10
 let EACHH = HEIGHT/11
-class ViewController: UIViewController {
+class ViewController: UIViewController ,SetDelegate,UIAlertViewDelegate{
     var curPiece:Piece?
     var blackMove:Bool?
     var curPoint:Point?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        blackMove = true
         let checkerboard = UIImageView(frame:SCREEN)
         checkerboard.userInteractionEnabled = true
         checkerboard.image = UIImage(named: "checkerboard.jpg")
         view.addSubview(checkerboard)
         createPieces()
         createPoint()
+        setSubViews()
         
+        
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        blackMove = Config.shareConfig.blackMove
+    }
+    func setSubViews (){
         let set = UIButton(frame: CGRect(x: 10, y: 20, width: 40, height: 30))
         set.setTitleColor(UIColor.blackColor(), forState: .Normal)
         set.setTitle("设置", forState: .Normal)
         view.addSubview(set)
         set.addTarget(self, action: "setting", forControlEvents: .TouchUpInside)
     }
-    
     func setting(){
-        let set = SetPage()
-        view.addSubview(set)
+        let set = SetController()
+        set.delegate = self
+        presentViewController(set, animated: false, completion: nil)
     }
     
     var pieces:[Piece]?
@@ -109,6 +116,24 @@ class ViewController: UIViewController {
             }
         }
     }
+    /**
+     重置棋盘
+     */
+    func reset() {
+        for point in points! {
+            point.removeFromSuperview()
+        }
+        points?.removeAll()
+        pieces?.removeAll()
+        curPiece = nil
+        curPoint = nil
+        createPieces()
+        createPoint()
+        setSubViews()
+        blackMove = Config.shareConfig.blackMove
+    }
+    
+    
     /**
      选择棋子
      
@@ -251,10 +276,12 @@ class ViewController: UIViewController {
         }
         if j == nil {
             print("黑棋输")
+            alert("红赢")
             return
         }
         if s == nil {
             print("红棋输")
+            alert("黑赢")
             return
         }
         if j!.coordinate.0 == s!.coordinate.0 {
@@ -273,15 +300,30 @@ class ViewController: UIViewController {
                 
                 if blackMove! {
                     print("黑赢")
+                    alert("黑赢")
                     return
                 }else {
                     print("红赢")
+                    alert("红赢")
                     return
                 }
             }
         }
     }
+    
+    func alert(msg:String){
+        
+        let alert = UIAlertView(title: msg, message:"", delegate:self, cancelButtonTitle: "取消",otherButtonTitles:"重置")
+        alert.show()
+    }
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            reset()
+        }
+    }
 }
+
+
 
 class Point: UIButton {
     var picked:Bool{
