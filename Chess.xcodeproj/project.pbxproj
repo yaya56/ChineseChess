@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16A5B5ED1C1924440074AE09 /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B5EC1C1924440074AE09 /* SetPage.swift */; };
 		16BC243E1C17D8DA00087427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC243D1C17D8DA00087427 /* AppDelegate.swift */; };
 		16BC24401C17D8DA00087427 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC243F1C17D8DA00087427 /* ViewController.swift */; };
 		16BC24431C17D8DA00087427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16BC24411C17D8DA00087427 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16A5B5EC1C1924440074AE09 /* SetPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
 		16BC243A1C17D8DA00087427 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16BC243D1C17D8DA00087427 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16BC243F1C17D8DA00087427 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				16BC24461C17D8DA00087427 /* LaunchScreen.storyboard */,
 				16BC24491C17D8DA00087427 /* Info.plist */,
 				16BC24521C17DE0D00087427 /* Piece.swift */,
+				16A5B5EC1C1924440074AE09 /* SetPage.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16BC24401C17D8DA00087427 /* ViewController.swift in Sources */,
+				16A5B5ED1C1924440074AE09 /* SetPage.swift in Sources */,
 				16BC243E1C17D8DA00087427 /* AppDelegate.swift in Sources */,
 				16BC24531C17DE0D00087427 /* Piece.swift in Sources */,
 			);
@@ -310,6 +314,7 @@
 				16BC244E1C17D8DA00087427 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

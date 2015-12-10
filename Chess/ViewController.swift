@@ -27,10 +27,17 @@ class ViewController: UIViewController {
         createPieces()
         createPoint()
         
-        
-        //print("\(pieces)")
+        let set = UIButton(frame: CGRect(x: 10, y: 20, width: 40, height: 30))
+        set.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        set.setTitle("设置", forState: .Normal)
+        view.addSubview(set)
+        set.addTarget(self, action: "setting", forControlEvents: .TouchUpInside)
     }
     
+    func setting(){
+        let set = SetPage()
+        view.addSubview(set)
+    }
     
     var pieces:[Piece]?
     func createPieces(){
@@ -91,6 +98,9 @@ class ViewController: UIViewController {
                 choosePiece(sender)
             }
             if !blackMove! && sender.piece?.side == .Black {
+                choosePiece(sender)
+            }
+            if piece.side == sender.piece?.side {
                 choosePiece(sender)
             }
         }else {
